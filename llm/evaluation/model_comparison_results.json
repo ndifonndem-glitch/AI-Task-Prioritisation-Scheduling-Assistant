@@ -1,0 +1,11 @@
+{
+  "evaluation_sample_count": 50,
+  "base_model_qwen3b": {
+    "json_validity_rate_pct": 100.0,
+    "strict_format_compliance_pct": 0.0
+  },
+  "fine_tuned_qwen3b_lora": {
+    "json_validity_rate_pct": 100.0,
+    "strict_format_compliance_pct": 100.0
+  }
+}

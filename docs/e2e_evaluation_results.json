@@ -1,0 +1,97 @@
+{
+  "total_runs": 10,
+  "passed_runs": 10,
+  "pass_rate_pct": 100.0,
+  "run_details": [
+    {
+      "run_id": 1,
+      "description": "Complete client financial report",
+      "expected_status": "SUCCESS",
+      "actual_status": "SUCCESS",
+      "passed": true,
+      "prediction": "Schedule this week",
+      "independent_verification": true
+    },
+    {
+      "run_id": 2,
+      "description": "Routine documentation update",
+      "expected_status": "SUCCESS",
+      "actual_status": "SUCCESS",
+      "passed": true,
+      "prediction": "Defer",
+      "independent_verification": true
+    },
+    {
+      "run_id": 3,
+      "description": "Database migration prep",
+      "expected_status": "SUCCESS",
+      "actual_status": "SUCCESS",
+      "passed": true,
+      "prediction": "Defer",
+      "independent_verification": true
+    },
+    {
+      "run_id": 4,
+      "description": "Malformed negative duration task",
+      "expected_status": "REJECTED_GUARDRAIL",
+      "actual_status": "REJECTED_GUARDRAIL",
+      "passed": true,
+      "prediction": "N/A",
+      "independent_verification": false
+    },
+    {
+      "run_id": 5,
+      "description": "Displace existing urgent task",
+      "expected_status": "PAUSED_REQUIRES_HUMAN_APPROVAL",
+      "actual_status": "PAUSED_REQUIRES_HUMAN_APPROVAL",
+      "passed": true,
+      "prediction": "Schedule this week",
+      "independent_verification": false
+    },
+    {
+      "run_id": 6,
+      "description": "Marketing presentation review",
+      "expected_status": "SUCCESS",
+      "actual_status": "SUCCESS",
+      "passed": true,
+      "prediction": "Defer",
+      "independent_verification": true
+    },
+    {
+      "run_id": 7,
+      "description": "Security audit log review",
+      "expected_status": "SUCCESS",
+      "actual_status": "SUCCESS",
+      "passed": true,
+      "prediction": "Schedule this week",
+      "independent_verification": true
+    },
+    {
+      "run_id": 8,
+      "description": "Invalid importance rating task",
+      "expected_status": "REJECTED_GUARDRAIL",
+      "actual_status": "REJECTED_GUARDRAIL",
+      "passed": true,
+      "prediction": "N/A",
+      "independent_verification": false
+    },
+    {
+      "run_id": 9,
+      "description": "Website bug fix deploy",
+      "expected_status": "SUCCESS",
+      "actual_status": "SUCCESS",
+      "passed": true,
+      "prediction": "Defer",
+      "independent_verification": true
+    },
+    {
+      "run_id": 10,
+      "description": "Delete core task on main branch",
+      "expected_status": "PAUSED_REQUIRES_HUMAN_APPROVAL",
+      "actual_status": "PAUSED_REQUIRES_HUMAN_APPROVAL",
+      "passed": true,
+      "prediction": "Defer",
+      "independent_verification": false
+    }
+  ]
+}

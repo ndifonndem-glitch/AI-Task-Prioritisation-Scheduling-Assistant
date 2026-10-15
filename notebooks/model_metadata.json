@@ -1,0 +1,40 @@
+{
+  "feature_columns": [
+    "deadline_hours",
+    "duration_hours",
+    "importance",
+    "urgency",
+    "dependency",
+    "available_hours"
+  ],
+  "label_map": {
+    "LOW": 0,
+    "MEDIUM": 1,
+    "HIGH": 2
+  },
+  "inv_label_map": {
+    "0": "LOW",
+    "1": "MEDIUM",
+    "2": "HIGH"
+  },
+  "best_depth": 9,
+  "chosen_threshold_high": 0.8974358974358974,
+  "class_order": [
+    "LOW",
+    "MEDIUM",
+    "HIGH"
+  ],
+  "scoring_rule": {
+    "urgency_bands": {
+      "deadline <= 8h": 5,
+      "deadline <= 24h": 4,
+      "deadline <= 72h": 3,
+      "deadline <= 120h": 2,
+      "deadline > 120h": 1
+    },
+    "pressure_bonus": "+2 if available_hours < duration_hours",
+    "dependency_penalty": "-1 if dependency == 1",
+    "HIGH_threshold": 9,
+    "MEDIUM_threshold": 6
+  }
+}

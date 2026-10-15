@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  ml-prediction-service:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    container_name: ml_task_priority_api
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+    restart: always
+
+  llm-router-cpu:
+    image: ghcr.io/ggerganov/llama.cpp:server
+    container_name: qwen_gguf_router_base
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../llm/export:/models
+    command:
+      - "--model"
+      - "/models/qwen2.5-3b-instruct-q4_k_m.gguf"
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8080"
+      - "--ctx-size"
+      - "2048"
+    restart: always
+
+  llm-router-finetuned:
+    image: ghcr.io/ggerganov/llama.cpp:server
+    container_name: qwen_gguf_router_finetuned
+    ports:
+      - "8081:8081"
+    volumes:
+      - ../llm/export:/models
+    command:
+      - "--model"
+      - "/models/qwen2.5-3b-instruct-q4_k_m.gguf"
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8081"
+      - "--ctx-size"
+      - "2048"
+    restart: always

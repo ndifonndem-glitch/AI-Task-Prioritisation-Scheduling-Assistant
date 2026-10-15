@@ -1,0 +1,66 @@
+{
+  "model_type": "DecisionTreeClassifier",
+  "max_depth": 8,
+  "feature_names": [
+    "hours_to_deadline",
+    "est_duration_h",
+    "stated_importance",
+    "slack_ratio",
+    "fits_largest_block",
+    "dep_blocked",
+    "n_dependents",
+    "times_deferred",
+    "age_days",
+    "urgency_density",
+    "deferral_starvation_index",
+    "work_pressure_ratio"
+  ],
+  "target_classes": [
+    "Defer",
+    "Do now",
+    "Schedule this week"
+  ],
+  "metrics": {
+    "accuracy": 0.9350,
+    "precision_weighted": 0.9332,
+    "recall_weighted": 0.9350,
+    "weighted_f1": 0.9341,
+    "macro_f1": 0.8249,
+    "baseline_dummy_weighted_f1": 0.6564,
+    "baseline_logistic_weighted_f1": 0.7800,
+    "per_class_metrics": {
+      "Defer": {
+        "precision": 0.9673,
+        "recall": 0.9737,
+        "f1_score": 0.9705,
+        "test_support": 152
+      },
+      "Schedule this week": {
+        "precision": 0.9118,
+        "recall": 0.9118,
+        "f1_score": 0.9118,
+        "test_support": 34
+      },
+      "Do now": {
+        "precision": 0.6154,
+        "recall": 0.5714,
+        "f1_score": 0.5926,
+        "test_support": 14
+      }
+    }
+  },
+  "feature_importances": {
+    "slack_ratio": 0.3745,
+    "stated_importance": 0.2258,
+    "dep_blocked": 0.1484,
+    "times_deferred": 0.0802,
+    "work_pressure_ratio": 0.0697,
+    "est_duration_h": 0.0249,
+    "hours_to_deadline": 0.0200,
+    "urgency_density": 0.0177,
+    "fits_largest_block": 0.0144,
+    "n_dependents": 0.0123,
+    "age_days": 0.0121,
+    "deferral_starvation_index": 0.0000
+  }
+}

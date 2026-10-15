@@ -1,0 +1,514 @@
+[
+  {
+    "commit_id": "commit-df161282",
+    "timestamp": "2026-09-22T18:00:11.875711",
+    "task_name": "Complete client financial report",
+    "priority": "HIGH",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-5eb89fa7",
+    "timestamp": "2026-09-22T18:00:13.931177",
+    "task_name": "Routine documentation update",
+    "priority": "LOW",
+    "probability": 0.998,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-2e8c8f63",
+    "timestamp": "2026-09-22T18:00:16.012329",
+    "task_name": "Database migration prep",
+    "priority": "HIGH",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-d815c08d",
+    "timestamp": "2026-09-22T18:00:20.136070",
+    "task_name": "Marketing presentation review",
+    "priority": "MEDIUM",
+    "probability": 0.5769,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-ea8644dd",
+    "timestamp": "2026-09-22T18:00:22.193053",
+    "task_name": "Security audit log review",
+    "priority": "HIGH",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-f6e387d4",
+    "timestamp": "2026-09-22T18:00:24.250828",
+    "task_name": "Website bug fix deploy",
+    "priority": "HIGH",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-5492d258",
+    "timestamp": "2026-09-23T16:14:54.369629",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-44d005a8",
+    "timestamp": "2026-09-23T16:14:56.447213",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-ef27a9ce",
+    "timestamp": "2026-09-23T16:14:58.522503",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-0fd10849",
+    "timestamp": "2026-09-23T16:15:00.750928",
+    "task_name": "Displace existing urgent task",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-1e068463",
+    "timestamp": "2026-09-23T16:15:02.828903",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-408426c4",
+    "timestamp": "2026-09-23T16:15:04.906455",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-b28459ab",
+    "timestamp": "2026-09-23T16:15:06.978989",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-860a4b43",
+    "timestamp": "2026-09-23T16:19:21.971522",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-1e089516",
+    "timestamp": "2026-09-23T16:19:24.030623",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-58934e95",
+    "timestamp": "2026-09-23T16:19:26.088151",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-b0b4046f",
+    "timestamp": "2026-09-23T16:19:28.159556",
+    "task_name": "Displace existing urgent task",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-a21b5aae",
+    "timestamp": "2026-09-23T16:19:30.257616",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-8ad2eea8",
+    "timestamp": "2026-09-23T16:19:32.354647",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-0428651f",
+    "timestamp": "2026-09-23T16:19:34.520571",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-6ddbe060",
+    "timestamp": "2026-09-24T10:51:50.291810",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-9720bf7f",
+    "timestamp": "2026-09-24T10:51:52.351759",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-17c061b2",
+    "timestamp": "2026-09-24T10:51:54.404895",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-b4fcc00a",
+    "timestamp": "2026-09-24T10:51:56.460890",
+    "task_name": "Displace existing urgent task",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-29819b6f",
+    "timestamp": "2026-09-24T10:51:58.528397",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-aefe498d",
+    "timestamp": "2026-09-24T10:52:00.595747",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-37335a99",
+    "timestamp": "2026-09-24T10:52:02.659884",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-78fa18dc",
+    "timestamp": "2026-09-24T10:57:47.469850",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-1ffa679d",
+    "timestamp": "2026-09-24T10:57:49.541592",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-000f064e",
+    "timestamp": "2026-09-24T10:57:51.647421",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-d4cc4914",
+    "timestamp": "2026-09-24T10:57:55.785929",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-4feda216",
+    "timestamp": "2026-09-24T10:57:57.870166",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-6b39ff60",
+    "timestamp": "2026-09-24T10:57:59.954750",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-c5ec9259",
+    "timestamp": "2026-09-24T15:35:07.150769",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-a7e44eac",
+    "timestamp": "2026-09-24T15:35:07.190240",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-0c5740bd",
+    "timestamp": "2026-09-24T15:35:07.226077",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-f3e597f2",
+    "timestamp": "2026-09-24T15:35:07.295313",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-71bee190",
+    "timestamp": "2026-09-24T15:35:07.345362",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-00a5f792",
+    "timestamp": "2026-09-24T15:35:07.387521",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-36658c15",
+    "timestamp": "2026-09-25T09:26:07.798908",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-f124c9cc",
+    "timestamp": "2026-09-25T09:26:09.901427",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-1fabfab8",
+    "timestamp": "2026-09-25T09:26:12.022515",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-e5c072b4",
+    "timestamp": "2026-09-25T09:26:16.194222",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-1be44e79",
+    "timestamp": "2026-09-25T09:26:18.267516",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-286a9b6b",
+    "timestamp": "2026-09-25T09:26:20.351983",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-52c8eec4",
+    "timestamp": "2026-09-25T10:29:43.227866",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-38111763",
+    "timestamp": "2026-09-25T10:29:45.303786",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-43e1bb18",
+    "timestamp": "2026-09-25T10:29:47.404923",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-45244add",
+    "timestamp": "2026-09-25T10:29:51.541160",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-589b2ac3",
+    "timestamp": "2026-09-25T10:29:53.717955",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-c98bf23f",
+    "timestamp": "2026-09-25T10:29:55.823127",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-7ebd7f84",
+    "timestamp": "2026-09-25T10:37:36.652060",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-a27b72ca",
+    "timestamp": "2026-09-25T10:39:01.766822",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-4db2193a",
+    "timestamp": "2026-09-25T10:50:46.878243",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-c49b1c83",
+    "timestamp": "2026-09-25T10:55:52.560999",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-cc0f7555",
+    "timestamp": "2026-09-25T10:59:09.066601",
+    "task_name": "Complete client financial report",
+    "priority": "Schedule this week",
+    "probability": 0.9792,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-70f0bb5d",
+    "timestamp": "2026-09-25T10:59:11.134297",
+    "task_name": "Routine documentation update",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-c2cdec92",
+    "timestamp": "2026-09-25T10:59:13.231162",
+    "task_name": "Database migration prep",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-1c5e11e0",
+    "timestamp": "2026-09-25T10:59:17.387789",
+    "task_name": "Marketing presentation review",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-79cf979d",
+    "timestamp": "2026-09-25T10:59:19.501654",
+    "task_name": "Security audit log review",
+    "priority": "Schedule this week",
+    "probability": 0.75,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-848c3e0f",
+    "timestamp": "2026-09-25T10:59:21.598128",
+    "task_name": "Website bug fix deploy",
+    "priority": "Defer",
+    "probability": 1.0,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-77ba5889",
+    "timestamp": "2026-09-25T11:45:43.534575",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-c79093dd",
+    "timestamp": "2026-09-25T17:54:37.178549",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  },
+  {
+    "commit_id": "commit-0ed921c1",
+    "timestamp": "2026-09-29T13:32:29.012112",
+    "task_name": "Deploy critical security patch",
+    "priority": "Do now",
+    "probability": 0.985,
+    "action": "ADD_SCHEDULED_TASK"
+  }
+]
