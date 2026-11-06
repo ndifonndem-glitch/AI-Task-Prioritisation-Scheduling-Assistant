@@ -23,3 +23,5 @@
 - **Priority**: Do now (Confidence: 98.5%)
 - **Updated At**: 2026-11-05T14:46:17.216686
 - **Explanation**: Task deadline is within 2 hours with high stated importance.
+| 2026-11-06 13:26 | Finish the client demo deck | Do now | 0.9307 | symbolist-dtree-d4-20260924 |
+<!-- reasons: Deadline is close (3h away). -->
