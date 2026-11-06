@@ -27,3 +27,5 @@
 <!-- reasons: Deadline is close (3h away). -->
 | 2026-11-06 14:11 | review the Q4 security audit findings | Schedule this week | 0.9664 | d3c92f1b-558e-45c5-8997-227a7924f63c |
 <!-- reasons: the task is important; it does not depend on another task -->
+| 2026-11-06 14:23 | Integrity probe | Schedule this week | 1.0000 | symbolist-dtree-d4-20260924 |
+<!-- reasons: Deadline is 1.2 days away.; No single free block is long enough to start it.; 2.0 other tasks are waiting on this one. -->
