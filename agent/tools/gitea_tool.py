@@ -7,6 +7,12 @@ from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any, Tuple
 
+# Offline CI may use the local mock, but it must be asked for explicitly. The default
+# is to refuse: a verification that can silently confirm a mock is not independent
+# verification, which is the whole point of the criterion.
+ALLOW_MOCK = os.environ.get("GITEA_ALLOW_MOCK", "").lower() in ("1", "true", "yes")
+
+
 class GiteaRepositoryTool:
     """
     OpenClaw Gitea Repository Tool.
@@ -113,7 +119,9 @@ class GiteaRepositoryTool:
         live_success, live_res = self._try_live_gitea_commit(task_name, entry, commit_msg)
         if live_success:
             commit_id = live_res["commit_id"]
-            # Mirror to local mock log for local traceability
+            # Mirror to the local log for traceability only. The authoritative
+            # record is the Gitea commit above; this copy is never read back as
+            # verification of a live write.
             self._record_local_mock(commit_id, timestamp, task_name, priority, probability, entry)
             return {
                 "status": "success",
@@ -124,16 +132,34 @@ class GiteaRepositoryTool:
                 "timestamp": timestamp
             }
 
-        # 2. Fallback to Local Mock Repository (Offline CI/CD Mode)
+        # 2. The live commit failed. Refuse by default rather than writing locally and
+        #    calling it a success: the agent's action did not reach the repository, and
+        #    reporting "success" here is what allows a mock to be mistaken for evidence.
+        if not ALLOW_MOCK:
+            return {
+                "status": "refused",
+                "integration_mode": "none",
+                "reason": live_res.get("error", "Live Gitea server unreachable"),
+                "guidance": (
+                    "No commit was made. This is a terminal refusal, not a low-priority "
+                    "result, and no local fallback was written. Set GITEA_ALLOW_MOCK=1 "
+                    "for offline tests only - never for a demonstration."
+                ),
+                "timestamp": timestamp,
+            }
+
         commit_id = f"commit-{hash(timestamp + task_name) & 0xffffffff:08x}"
         self._record_local_mock(commit_id, timestamp, task_name, priority, probability, entry)
 
         return {
-            "status": "success",
+            "status": "mock_only",
             "integration_mode": "mock_repository_fallback",
             "fallback_reason": live_res.get("error", "Live server unreachable"),
             "commit_id": commit_id,
             "repo_file": str(self.tasks_file),
+            "warning": ("MOCK MODE - nothing reached Gitea. This result is not evidence "
+                        "of an agent action and must not be presented as one."),
+            "verified": None,
             "timestamp": timestamp
         }
 

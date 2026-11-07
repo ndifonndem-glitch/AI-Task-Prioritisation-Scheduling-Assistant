@@ -1,0 +1,33 @@
+{
+  "measured_on": "2026-11-07",
+  "method": "both arms through the router at 127.0.0.1:8080, model name asserted as the only differing payload key",
+  "models": {
+    "qwen05b-base": {
+      "file": "/opt/models/qwen2.5-0.5b-instruct-base.Q4_K_M.gguf",
+      "bytes": 491400032,
+      "sha256_prefix": "74a4da8c9fdbcd15"
+    },
+    "qwen05b-taskextract": {
+      "file": "/opt/models/qwen05b-taskextract.Q4_K_M.gguf",
+      "bytes": 397807584,
+      "sha256_prefix": "51e49f8cd902f820"
+    }
+  },
+  "n_cases": 6,
+  "results": {
+    "qwen05b-base": {
+      "schema_valid": 6,
+      "bare_json": 0,
+      "numeric_correct": 5,
+      "mean_latency_s": 3.6
+    },
+    "qwen05b-taskextract": {
+      "schema_valid": 6,
+      "bare_json": 6,
+      "numeric_correct": 0,
+      "mean_latency_s": 3.4
+    }
+  },
+  "finding": "Fine-tuning achieved what it was trained for - bare JSON without markdown fences, 0/6 to 6/6 - and cost numeric fidelity, 5/6 to 0/6. Both models produce schema-valid JSON, so the previously reported 0.0% schema accuracy for the base arm was an artefact of both backends resolving to one file, not a property of the base model.",
+  "supersedes": "the Figure 15.2 comparison, which was run when both model names resolved to a single GGUF"
+}
