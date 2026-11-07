@@ -189,37 +189,55 @@ class GiteaRepositoryTool:
 
     def verify_gitea_action(self, commit_id: str) -> Tuple[bool, str]:
         """
-        INDEPENDENT VERIFICATION FUNCTION.
-        Does NOT rely on the agent's self-report.
-        1. If live Gitea is active, queries GET /api/v1/repos/{owner}/{repo}/git/commits/{sha}.
-        2. Otherwise queries the local mock commit log and TASKS.md file.
+        INDEPENDENT VERIFICATION.
+
+        A live commit is verified ONLY against the Gitea API. If that query fails, the
+        verification fails: falling back to the local mirror would confirm a file this
+        process wrote itself, which is not independent of the agent and is exactly the
+        distinction the criterion is about. The local log is read only for a mock
+        commit id, and only when mock mode was explicitly enabled.
         """
-        # Try Live Gitea independent API verification
-        if not commit_id.startswith("commit-"):
+        is_mock_id = commit_id.startswith("commit-")
+
+        if not is_mock_id:
+            api_url = (f"{self.gitea_url}/api/v1/repos/{self.gitea_user}/"
+                       f"{self.gitea_repo}/git/commits/{commit_id}")
             try:
-                api_url = f"{self.gitea_url}/api/v1/repos/{self.gitea_user}/{self.gitea_repo}/git/commits/{commit_id}"
-                req = urllib.request.Request(api_url, headers=self._get_auth_header(), method="GET")
+                req = urllib.request.Request(api_url, headers=self._get_auth_header(),
+                                             method="GET")
                 with urllib.request.urlopen(req, timeout=5) as res:
                     if res.status == 200:
-                        return True, f"Independent Verification Passed: Live Gitea commit '{commit_id}' independently verified via API."
+                        return True, (f"Independent verification passed (mode=live): commit "
+                                      f"'{commit_id}' confirmed by GET {api_url}")
+                    return False, (f"Independent verification failed (mode=live): HTTP "
+                                   f"{res.status} from {api_url}")
             except Exception as e:
-                pass  # Fallback to local check if live query fails
+                # Terminal. No local fallback: a live commit is confirmed by the server
+                # or it is not confirmed at all.
+                return False, (f"Independent verification failed (mode=live): could not "
+                               f"reach {api_url} ({type(e).__name__}: {e}). The commit is "
+                               f"unconfirmed; it must not be reported as recorded.")
 
-        # Fallback to Local Mock verification
+        if not ALLOW_MOCK:
+            return False, (f"Independent verification failed: '{commit_id}' is a mock "
+                           f"commit id and mock mode is not enabled. No repository action "
+                           f"was verified.")
+
         if not self.tasks_file.exists() or not self.log_file.exists():
-            return False, "Independent Verification Failed: Repository file or commit log does not exist."
+            return False, "Independent verification failed (mode=MOCK): local files missing."
 
         with open(self.log_file, "r", encoding="utf-8") as f:
             logs = json.load(f)
-
-        matching_commit = next((c for c in logs if c["commit_id"] == commit_id), None)
-        if not matching_commit:
-            return False, f"Independent Verification Failed: Commit ID '{commit_id}' not found in log."
+        if not next((c for c in logs if c["commit_id"] == commit_id), None):
+            return False, (f"Independent verification failed (mode=MOCK): '{commit_id}' "
+                           f"not found in the local log.")
 
         with open(self.tasks_file, "r", encoding="utf-8") as f:
             tasks_content = f.read()
-
         if commit_id not in tasks_content:
-            return False, f"Independent Verification Failed: Commit ID '{commit_id}' missing from TASKS.md content."
+            return False, (f"Independent verification failed (mode=MOCK): '{commit_id}' "
+                           f"missing from TASKS.md.")
 
-        return True, f"Independent Verification Passed: Commit ID '{commit_id}' confirmed present in repository."
+        return True, (f"Local check passed (mode=MOCK): '{commit_id}' present in the local "
+                      f"mirror. This is NOT independent verification of a Gitea commit and "
+                      f"must not be presented as one.")
