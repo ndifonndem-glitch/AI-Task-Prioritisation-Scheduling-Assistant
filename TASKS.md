@@ -28,3 +28,6 @@
 - **Priority**: Do now (Confidence: 93.0%)
 - **Updated At**: 2026-11-07T08:18:28.864233
 - **Explanation**: probe
+| 2026-11-08 09:58 | The compliance summary is due in about 15 hours and will take roughly two hours. | Do now | 0.9307 | symbolist-dtree-d4-20260924 |
+<!-- reasons: Deadline is close (16h away). -->
+<!-- approved_by: johndoe -->
