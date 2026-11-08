@@ -12,7 +12,10 @@ component.
 
     python3 7_test_e2e_natural_language.py --runs 3
 """
-import argparse, json, re, statistics, subprocess, sys, time
+import argparse, json, os, re, statistics, subprocess, sys, time, urllib.request
+
+GITEA_URL = os.environ.get("GITEA_URL", "http://192.168.10.10:3000")
+GITEA_REPO = os.environ.get("GITEA_REPO", "Jesse/Assement_2")
 
 # ---------------------------------------------------------------- pass criteria
 # Fixed here, in advance, so they cannot be adjusted after seeing the results.
@@ -50,7 +53,7 @@ CASES = [
 def run_agent(text, session, timeout):
     """One turn through the real gateway. No shortcuts into the agent's internals."""
     cmd = ["openclaw", "agent", "--agent", "main",
-           "--session-key", session, "-m", text, "--json"]
+           "--session-key", session, "-m", text]
     t0 = time.time()
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
@@ -64,23 +67,38 @@ def run_agent(text, session, timeout):
                 "seconds": round(time.time() - t0, 1)}
 
 
-def attribute(result, gitea_state):
+def gitea_has(task_title, branch="a2-agent"):
+    """Independent check: did the decision reach the repository?
+
+    Asking Gitea is the point. An earlier version of this harness looked for evidence in
+    the agent's own printed reply, which is the one place it must not be taken from - the
+    agent writes that text, and a model that paraphrases its result would be scored as a
+    failure while a model that lied would pass.
+    """
+    url = ("%s/api/v1/repos/%s/raw/TASKS.md?ref=%s"
+           % (GITEA_URL.rstrip("/"), GITEA_REPO, branch))
+    try:
+        with urllib.request.urlopen(url, timeout=20) as r:
+            return task_title.lower() in r.read().decode("utf8", "replace").lower()
+    except Exception:
+        return False
+
+
+def attribute(result, priority_found, recorded):
     """Name the component responsible. 'Something failed' is not an evaluation."""
     out = (result.get("stdout") or "") + (result.get("stderr") or "")
     if result.get("stderr") == "no-gateway":
         return "infrastructure", "the openclaw CLI is not on PATH - run this on CT 201"
     if result.get("stderr") == "timeout":
         return "infrastructure", "run exceeded the time budget before completing"
-    if "FAILED_API_GUARDRAIL" in out:
-        return "prediction-service", "the agent reported the service unreachable"
-    if not re.search(r"predict", out, re.I):
-        return "agent", "no evidence the prediction tool was called"
-    if not any(p in out for p in CRITERIA["priority_must_be_one_of"]):
+    if "FAILED_API_GUARDRAIL" in out or "service unavailable" in out.lower():
+        return "prediction-service", "the agent reported the prediction service unreachable"
+    if not out.strip():
+        return "agent", "the agent produced no reply at all"
+    if not priority_found:
         return "llm-extraction", "no valid priority appears in the agent's reply"
-    if CRITERIA["gitea_must_verify"] and not gitea_state.get("verified"):
-        if gitea_state.get("mode") == "MOCK":
-            return "gitea", "the write went to the mock repository, not the server"
-        return "gitea", "the write could not be verified by an independent read"
+    if CRITERIA["gitea_must_verify"] and not recorded:
+        return "gitea", "the decision does not appear in TASKS.md on the work branch"
     return None, None
 
 
@@ -100,19 +118,18 @@ def main():
             r = run_agent(case["text"], session, args.timeout)
             # verification state is read from the agent's own result payload; the
             # tool now reports mode and verified explicitly (see 5_gitea_no_mock.py)
-            gitea = {}
-            m = re.search(r'"mode"\s*:\s*"(\w+)"', r["stdout"] or "")
-            v = re.search(r'"verified"\s*:\s*(true|false)', r["stdout"] or "")
-            if m: gitea["mode"] = m.group(1)
-            if v: gitea["verified"] = v.group(1) == "true"
-            component, why = attribute(r, gitea)
+            text_out = (r.get("stdout") or "") + (r.get("stderr") or "")
+            priority_found = next((p for p in CRITERIA["priority_must_be_one_of"]
+                                   if p.lower() in text_out.lower()), None)
+            recorded = gitea_has(case["text"][:40]) if priority_found else False
+            component, why = attribute(r, priority_found, recorded)
             passed = component is None
-            if case["expect"] and passed:
-                if case["expect"] not in (r["stdout"] or ""):
-                    passed, component, why = False, "decision-tree", \
-                        f"expected {case['expect']} for an unambiguous case"
+            if case["expect"] and passed and priority_found != case["expect"]:
+                passed, component, why = False, "decision-tree", \
+                    "expected %s for an unambiguous case, got %s" % (case["expect"], priority_found)
             results.append(dict(run=run, case=case["id"], passed=passed,
-                                seconds=r["seconds"], component=component, why=why))
+                                seconds=r["seconds"], priority=priority_found,
+                                recorded_in_gitea=recorded, component=component, why=why))
             if not passed:
                 failures.append(results[-1])
             print(f"  run {run}  {case['id']:<22} "
